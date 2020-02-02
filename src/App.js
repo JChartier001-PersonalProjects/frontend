@@ -1,11 +1,15 @@
 import React from 'react';
+import { Route } from 'react-router-dom'
+
+//components
+import LoginForm from './components/LoginForm'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Droom</h1>
-    </div>
-  );
+    <>
+      <Route path='/login' component={LoginForm} />
+    </>
+  )
 }
 
 export default App;
