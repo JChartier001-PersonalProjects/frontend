@@ -7,7 +7,7 @@ const NavBar = () => {
   const [activeItem, setActiveItem] = useState('home')
 
   return (
-    <div className="App">
+    <div className="Nav">
       <Menu fixed='top' borderless inverted>
         <Container>
           <Menu.Item as='a' header>
