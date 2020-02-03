@@ -1,12 +1,19 @@
 import React from 'react';
-import './App.css';
+import { Route } from 'react-router-dom'
+
+//components
+import LoginForm from './components/LoginForm'
+import SignUp from './components/SignUp'
+import Main from './components/Main'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Droom</h1>
-    </div>
-  );
+    <>
+      <Route exact path='/login' component={LoginForm} />
+      <Route exact path='/signup' component={SignUp} />
+      <Route exact path='/' component={Main} />
+    </>
+  )
 }
 
 export default App;
