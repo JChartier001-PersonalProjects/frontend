@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Form, Grid, Header, Message, Segment, Popup } from 'semantic-ui-react'
+import { Image, Button, Form, Grid, Header, Message, Segment, Popup } from 'semantic-ui-react'
+import logo from '../logo.svg'
 
 const options = [
   { text: 'Employer', value: 'employer' },
@@ -12,6 +13,7 @@ const SignUp = () => {
     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' color='teal' textAlign='center'>
+          <Image size='large' verticalAlign='bottom' src={logo} />
           Create New Account
         </Header>
         <Form size='large'>
