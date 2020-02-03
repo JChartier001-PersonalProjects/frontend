@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Segment, Container, Divider, Image, List } from 'semantic-ui-react'
+import { Segment, Container, Divider, Image, List } from 'semantic-ui-react'
 import logo from '../logo.svg'
 
 const Footer = () => {

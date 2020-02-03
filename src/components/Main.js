@@ -9,32 +9,6 @@ const Main = props => {
   return (
     <div className="App">
       <NavBar />
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
-      <p>wjoeifjwoefjiwoeifjwoefijwefoiwjeofijwefoijoijwoefijwoeifj</p>
       <Footer />
     </div>
   )
