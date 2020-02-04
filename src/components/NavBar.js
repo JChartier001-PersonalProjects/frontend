@@ -1,10 +1,8 @@
 import React from 'react'
-import { Container, Label, Icon, Dropdown, Image, Menu } from 'semantic-ui-react'
+import { Container, Label, Dropdown, Image, Menu } from 'semantic-ui-react'
 import logo from '../logo.svg'
-import { useState } from 'react'
 
 const NavBar = () => {
-  const [activeItem, setActiveItem] = useState('home')
 
   return (
     <div className="Nav">
