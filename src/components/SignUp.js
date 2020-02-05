@@ -39,7 +39,6 @@ const SignUp = props => {
     signUpForm.tos ? 
       axiosWithAuth().post('/api/auth/register', {email: signUpForm.email, password: signUpForm.password, role: signUpForm.role})
         .then(res => {
-          console.log(res)
           localStorage.setItem('token', res.data.token)
           props.history.push('/')
         })
