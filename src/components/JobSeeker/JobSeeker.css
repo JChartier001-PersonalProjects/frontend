@@ -1,0 +1,43 @@
+section {
+    border: solid 1px gray;
+    width: 100%;
+    border-radius: 0.6rem;
+    margin: 20px 0px;
+}
+
+.section_content {
+    margin: 20px;
+}
+.section_top_content {
+    display: flex;
+    margin: 0px 0px 20px 0px;
+}  
+.section_title {
+    width: 100%;
+    color: #878787;
+    margin: 0px 0px 23px 0px;
+}
+
+.section_action {
+    display: flex;
+    justify-content: space-between;
+    width: 11%;
+}
+
+.profile-content {
+   margin-left: 15%;
+   margin-right: 15%; 
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.skill-list .skills {
+    width: 88%;
+}
+
+.skill-list button {
+    margin: 0px 2px;
+}

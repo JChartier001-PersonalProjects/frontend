@@ -6,6 +6,8 @@ import LoginForm from './components/LoginForm'
 import SignUp from './components/SignUp'
 import Main from './components/Main'
 
+
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
@@ -18,6 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     }
   />
 )
+
 
 function App() {
   return (
