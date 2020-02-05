@@ -1,10 +1,13 @@
 import React from 'react'
-import { Container, Label, Icon, Dropdown, Image, Menu } from 'semantic-ui-react'
+import { Container, Label, Dropdown, Image, Menu } from 'semantic-ui-react'
 import logo from '../logo.svg'
-import { useState } from 'react'
 
-const NavBar = () => {
-  const [activeItem, setActiveItem] = useState('home')
+const NavBar = props => {
+
+  const setLogout = () => {
+    localStorage.removeItem('token')
+    props.history.push('/')
+  }
 
   return (
     <div className="Nav">
@@ -27,7 +30,7 @@ const NavBar = () => {
                 <Dropdown.Item icon='street view' text='View Profile' />
                 <Dropdown.Item icon='edit' text='Edit Profile' />
                 <Dropdown.Divider />
-                <Dropdown.Item icon='log out' text='Logout' />
+                <Dropdown.Item icon='log out' text='Logout' onClick={setLogout} />
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Menu>
