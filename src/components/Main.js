@@ -9,7 +9,7 @@ import SwipeView from './SwipeView'
 const Main = props => {
   return (
     <div className="App">
-      <NavBar />
+      <NavBar history={props.history} />
       <SwipeView />
       <Footer />
     </div>
