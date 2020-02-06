@@ -9,7 +9,6 @@ import AddJob from './components/AddJob';
 function App() {
   return (
     <div className="App">
-      <h1>Droom</h1>
       
 
     {/* *** */}
