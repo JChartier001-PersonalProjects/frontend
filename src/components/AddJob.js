@@ -4,7 +4,7 @@ import faker from 'faker'
 
 
 // import { withFormik, Form, Field } from 'formik';
-import { Grid, Header, Container, Form, Input, Label, Dropdown, Segment, TextArea, Divider, Select, Checkbox } from 'semantic-ui-react';
+import { Container, Form, Button, Label, Segment, Divider, Select } from 'semantic-ui-react';
 import { findByLabelText } from '@testing-library/react';
 
 const AddJob = () => {
@@ -44,74 +44,74 @@ const AddJob = () => {
     ]
 
     return (
-        <Grid>
-            <Grid.Column>
-                <Header as='h1' color='teal' textAlign='center' padded="very">Droom</Header>
-                <Container textAlign="center">
-                    <Segment raised compact style={{ maxWidth: 850 }} raised padded="very" textAlign="left">
-                        <Form size="large" onSubmit={values => handleSubmit(values)}>
-                            <Form.Input 
-                                
-                                placeholder="Job Title (Ex. Senior Backend Developer)" 
-                                name="jobTitle" 
-                                label="Job Title" 
-                            />
-                            <Form.TextArea 
-                                placeholder="What are you looking for in an applicant?"  
-                                name="description" 
-                                rows={4} 
-                                label="Description" 
-                            />
-                            <Form.Input 
-                                
-                                placeholder="What are some of the benefits of working at your company?" 
-                                name="benefits" 
-                                label="Benefits" 
-                            />
-                            <Divider section />
+        <Container text>
+            <Segment raised compact padded="very" textAlign="left">
+                <Form size="large" onSubmit={values => handleSubmit(values)}>
+                    <Form.Input 
+                        
+                        placeholder="Job Title (Ex. Senior Backend Developer)" 
+                        name="jobTitle" 
+                        label="Job Title" 
+                        onChange={handleChange}
+                    />
+                    <Form.TextArea 
+                        placeholder="What are you looking for in an applicant?"  
+                        name="description" 
+                        rows={4} 
+                        label="Description" 
+                        onChange={handleChange}
+                    />
+                    <Form.Input 
+                        
+                        placeholder="What are some of the benefits of working at your company?" 
+                        name="benefits" 
+                        label="Benefits" 
+                        onChange={handleChange}
+                    />
+                    <Divider section />
 
-                            <Form.Group fluid widths="equal">
-                                <Form.Input 
-                                    labelPosition='left' 
-                                    type='text' 
-                                    placeholder='Salary'
-                                    action
-                                >
-                                    <Label >$</Label>
-                                    <input />
-                                    <Select compact defaultValue='Annual' options={salaryTypes}/>
-                                </Form.Input>
-                                <Form.Select 
-                                    placeholder='Employment Type' 
-                                    selection 
-                                    options={employmentOptions} 
-                                />
-                            </Form.Group>
-                            <Form.Group fluid widths="equal">
-                                <Form.Input 
-                                        placeholder="City" 
-                                        type="text" 
-                                        name="city" 
-                                    />
-                                    <Form.Dropdown 
-                                        placeholder='State' 
-                                        search 
-                                        selection 
-                                        options={stateOptions} 
-                                    />
-                                    {/* <Segment fluid >
-                                        <Label size="large" labelPosition="left">
-                                            Accept Remote Applicants?
-                                        </Label>
-                                        <Checkbox fluid slider size="large" />
-                                    </Form.Group> */}
-                            </Form.Group>
-                            <Form.Button color='teal' fluid size='large' onSubmit={handleSubmit} content="Add Job" />
-                        </Form>
-                    </Segment>
-                </Container>
-            </Grid.Column>
-        </Grid>
+                    <Form.Group fluid widths="equal">
+                        <Form.Input 
+                            labelPosition='left' 
+                            type='text' 
+                            placeholder='Salary'
+                            name="salary"
+                            action
+                            onChange={handleChange}
+                        >
+                            <Label >$</Label>
+                            <input />
+                            <Select name="salaryType" compact defaultValue='Annual' options={salaryTypes} onChange={handleChange}/>
+                        </Form.Input>
+                        <Form.Select 
+                            placeholder='Employment Type' 
+                            name="employmentType"
+                            selection 
+                            options={employmentOptions} 
+                            defaultValue="Full-Time"
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group fluid widths="equal">
+                        <Form.Input 
+                                placeholder="City" 
+                                type="text" 
+                                name="city" 
+                                onChange={handleChange}
+                            />
+                            <Form.Dropdown 
+                                placeholder='State' 
+                                name="state"
+                                selection 
+                                options={stateOptions} 
+                                onChange={handleChange}
+                            />
+
+                    </Form.Group>
+                    <Button positive fluid size='large' onSubmit={handleSubmit} content="Add Job" />
+                </Form>
+            </Segment>
+        </Container>
         
         
     )

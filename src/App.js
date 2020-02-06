@@ -5,6 +5,8 @@ import './App.css';
 
 
 import AddJob from './components/AddJob';
+import EmployerProfile from './components/EmployerProfile';
+
 
 function App() {
   return (
@@ -14,8 +16,8 @@ function App() {
     {/* *** */}
     <Route exact path="/add-job" component={AddJob} />
 
-    <AddJob/>
-
+    {/* <AddJob/> */}
+    <EmployerProfile />
     {/* *** */}
 
     </div>
