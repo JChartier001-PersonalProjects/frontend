@@ -1,31 +1,54 @@
 import React, {useState, useEffect} from 'react'
-import "bootstrap/dist/css/bootstrap.min.css"
-
 import Modal from 'react-bootstrap/Modal'
-
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import { axiosWithAuth } from '../../utils.js'
 
+const SkillList = ({ errors, touched, values, status, employee }) => {
 
+    // Set employee in local storage.
+    localStorage.setItem('employee', JSON.stringify(employee));
 
-const SkillList = ({ errors, touched, values, status }) => {
+    let employeeSkills = '';
 
+    if ('skills' in employee) {
+      employeeSkills = employee.skills;
+    }
+    
+    const [skills, setSkill] = useState(employeeSkills ? [employeeSkills] : []);
+     
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {setShow(true)};
 
-    const handleChange = e => {
+    const handleChange = e => {     
         e.preventDefault();    
         //e.target.parentElement.style.display  ='none';  
     };
- 
-    const [skills, setSkill] = useState(['PHP','ROR','Jquery']);
    
     useEffect(() => {
       status && setSkill(skills => [...skills, status]);
     }, [status]);
+
+    const deleteSkill = id => {
+   
+      if (window.confirm("Are you sure your want to delete")) {
+
+          axiosWithAuth()
+          .delete(`https://droom1.herokuapp.com/api/skills/${id}`)
+          .then(res => {
+            console.log("Delete Skill", res);
+            setSkill(skills.filter(skill => skill.id !== id));
+          })
+          // do stuff with whatever gets returned
+          .catch(err => {
+            console.log("Error:", err.response);          
+          });  
+
+      } 
+     
+  }
     
    
     return (
@@ -39,58 +62,46 @@ const SkillList = ({ errors, touched, values, status }) => {
                 </div>
                 <Modal show={show} onHide={handleClose}>
                 <Form>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Skill</Modal.Title>
-                </Modal.Header>
+                  <Modal.Header closeButton>
+                      <Modal.Title>Add Skill</Modal.Title>
+                  </Modal.Header>
 
-                <Modal.Body>
-                
-                    {touched.skill_name && errors.skill_name && <div class="alert"><span class="closebtn" onClick={handleChange}>&times;</span> 
-                    <strong>Danger!</strong> {errors.skill_name}</div>}
+                  <Modal.Body>
+                    {touched.skill_name && errors.skill_name && <div class="alert"><strong>Danger!</strong> {errors.skill_name}</div>}
                   
                     <Field
                         type="text"
                         name="skill_name"
-                        placeholder="skill"
-                        value={values.skill}
+                        placeholder="Skill (ex: Data Analysis)"
+                        value={values.skill_name}
                         />
-
-                    <Field
-                    type="hidden"
-                    name="emp_id"
-                    placeholder="8"
-                    value={values.emp_id}
-
-                    />
-
-                </Modal.Body>
-                <Modal.Footer>
-                    <button className="btn btn-secondary"  onClick={handleClose}>
-                    Close
-                    </button>
-                    <button className='btn btn-primary' type="submit">
-                    Save Changes
-                    </button>
-                </Modal.Footer>
-                </Form>
-                </Modal>                
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button className="btn btn-secondary"  onClick={handleClose}>
+                        Close
+                        </button>
+                        <button className='btn btn-primary' type="submit">
+                        Save Changes
+                        </button>
+                    </Modal.Footer>
+                  </Form>
+                  </Modal>                
                 
                 <div>
-                {skills.length > 0 ? (
+                {skills.length > 0  ? (
                     skills.map(skill => (
-                    <div>
-                        <div className="skill-list">    
-                            <span className="skills"><b>{skill}</b></span>
+                    <div key={skill.id}>
+                        <div className="content-list">  
+                            <span className="skills"><b>{skill.skill_name}</b></span>
                             <div>
                                 <button className="btn btn-primary">Edit</button>
-                                <button className="btn btn-danger">Delete</button>
+                                <button className="btn btn-danger" onClick={() => deleteSkill(skill.id)}>Delete</button>
                             </div>
                             <div>
-                            
                         </div>
                         </div>
                         <hr></hr>
-                    </div>
+                      </div>
                         ))
                     ) : (
                     <div>    
@@ -106,10 +117,9 @@ const SkillList = ({ errors, touched, values, status }) => {
 
 // higher order component
 const FormikMyForm = withFormik({
-    mapPropsToValues({ skill_name }) {
+    mapPropsToValues({ skill_name}) {
       return {
-        skill_name: skill_name || "",
-              
+        skill_name: skill_name || "",       
       };
     },
   
@@ -119,35 +129,26 @@ const FormikMyForm = withFormik({
     }),
   
     handleSubmit(values, { setStatus, resetForm }) {
-      console.log("Submitting form:", values);
-      var res = {skill_name: "tanveer",
-      status: 201,
-      statusText:""};
-      console.log("Response form:", res);
-      //setStatus();
-      setStatus([values.skill_name]);
+
+      const employee = JSON.parse(localStorage.getItem('employee'));
+      values.emp_id = employee.id;
      
-     /*
-      axios
-        .post("https://droom1.herokuapp.com/api/skills", values)
+      axiosWithAuth()
+       .post("https://droom1.herokuapp.com/api/skills", values)
+        //.get("https://droom1.herokuapp.com/api/skills", values)
+        //.post("https://droom1.herokuapp.com/api/employee", {user_id: '1', name: 'Tan', portfolio_link: 'Testing'})
+        //.get("https://droom1.herokuapp.com/api/employee")
         // just put in a url you want data from
         .then(res => {
-          console.log("Success:", res);
+          console.log("Success Skill", res);
           setStatus(res.data);
           resetForm();
         })
         // do stuff with whatever gets returned
         .catch(err => {
           console.log("Error:", err.response);          
-         
         });
       // if there's an error, handle it
-     
-      */
-    
-       
-    
-    
     }
   })(SkillList);
 
